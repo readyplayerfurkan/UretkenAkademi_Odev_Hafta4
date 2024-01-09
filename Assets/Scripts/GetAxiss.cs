@@ -4,6 +4,7 @@ public class GetAxiss : MonoBehaviour
 {
     private float _verticalInputValue;
     private float _horizontalInputValue;
+    private byte _layerNumber;
 
     private void Update()
     {
@@ -35,5 +36,11 @@ public class GetAxiss : MonoBehaviour
                 Debug.Log("You are moving to the ground.");
                 break;
         }
+    }
+
+    private void Start()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        players[0].SetActive(false); 
     }
 }
