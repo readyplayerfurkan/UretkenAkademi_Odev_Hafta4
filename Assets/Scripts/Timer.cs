@@ -8,6 +8,5 @@ public class Timer : MonoBehaviour
     {
         // Time.deltaTime = 1/fps
         _timer += Time.deltaTime;
-        print(_timer);
     }
 }
