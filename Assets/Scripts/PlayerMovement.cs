@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
         _rotationY = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
         
         transform.Translate( 0, 0, _speedZ);
-        transform.Rotate(Vector3.up * _rotationY);
+        if (_speedZ > 0)
+            transform.Rotate(Vector3.up * _rotationY);
+        else
+            transform.Rotate(Vector3.down * _rotationY);
     }
 }

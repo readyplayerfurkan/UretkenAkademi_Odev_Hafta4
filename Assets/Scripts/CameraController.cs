@@ -2,19 +2,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private float _xRotation = 0.0f;
-    public float mouseSensitivity = 100f;
-    public GameObject player;
-    
-    void Update()
+    [SerializeField] private GameObject vehicle;
+    private Vector3 _cameraOffset;
+
+    private void Start()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;
+        _cameraOffset = new Vector3(0, 4, -6);
+    }
 
-        _xRotation += mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-
-        transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
-        player.transform.Rotate(Vector3.up * mouseX);
+    private void Update()
+    {
+        transform.position = vehicle.transform.position + _cameraOffset;
+        //transform.rotation = vehicle.transform.rotation;
     }
 }
